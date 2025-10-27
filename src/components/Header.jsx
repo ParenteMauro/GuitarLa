@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 export default function Header() {
-    const name = "Juan"
+    
+
     return (
         <Fragment>
             <header className="py-5 header">
