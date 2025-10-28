@@ -36,7 +36,7 @@ export default function Header({ cart }) {
                                                     (
                                                             <tr>
                                                                 <td>
-                                                                    <img className="img-fluid" src="./public/img/guitarra_02.jpg" alt="imagen guitarra" />
+                                                                    <img className="img-fluid" src={`/img/${guitar.image}.jpg`} alt="imagen guitarra" />
                                                                 </td>
                                                 
                                                                 <td>{ guitar.name}</td>
