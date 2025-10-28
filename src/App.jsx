@@ -4,10 +4,28 @@ import { useState } from "react"
 import { db } from "./data/db"
 function App() {
     const [data, setData] = useState(db)
-   
+    const [cart, setCart] = useState([])
+
+    function addToCart(item){
+        const itemExists = cart.findIndex((guitar)=> guitar.id=== item.id)
+        if(itemExists >= 0){
+            const updatedCart = [...cart]
+            updatedCart[itemExists].quantity++
+            setCart(updatedCart)
+        }
+        else{
+            item.quantity = 1
+            setCart(prevCart => [...prevCart, item])
+            console.log("Agregando")
+        }
+      
+    }
+
     return (
         <>
-            <Header />
+            <Header 
+                cart ={cart}
+            />
 
 
             <main className="container-xl mt-5">
@@ -19,6 +37,7 @@ function App() {
                         <Guitar 
                             key={guitar.id}
                             guitar = {guitar}
+                            addToCart = {addToCart}
                         />
 
                         ))}
