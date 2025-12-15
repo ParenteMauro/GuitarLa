@@ -20,11 +20,46 @@ function App() {
         }
       
     }
+    function removeFromCart(id){
+        setCart((prevCart)=> prevCart.filter(guitar => guitar.id !== id))
+    }
+    function increaseQuantity(id){
+        const updatedCart = cart.map( item => {
+            if(item.id === id){ 
+                return{
+                    ...item,
+                    quantity: item.quantity + 1
+                }
+            }
+            return item
+        })
+        setCart(updatedCart)
+    }
+     function decreaseQuantity(id){
+        const updatedCart = cart.map( item => {
+            if(item.id === id){ 
+                if(item.quantity >=      2)
+                return{
+                    ...item,
+                    quantity: item.quantity - 1
+                }
+            }
+            return item
+        })
+        setCart(updatedCart)
+    }
+    function clearCart(){
+        setCart([])
+    }
 
     return (
         <>
             <Header 
                 cart ={cart}
+                removeFromCart = {removeFromCart}
+                increaseQuantity = {increaseQuantity}
+                decreaseQuantity = {decreaseQuantity}
+                clearCart = {clearCart}
             />
 
 
